@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/img/Mary.gif">
 <meta property="article:published_time" content="2022-08-24T14:46:32.000Z">
-<meta property="article:modified_time" content="2022-08-24T16:25:10.341Z">
+<meta property="article:modified_time" content="2022-08-24T16:27:04.363Z">
 <meta property="article:author" content="Xiaowen">
 <meta property="article:tag" content="前端">
 <meta name="twitter:card" content="summary_large_image">
@@ -277,7 +277,7 @@
                 
                 <h1 id="typescript"><a href="#typescript" class="headerlink" title="typescript"></a>typescript</h1><h2 id="一、安装和编译"><a href="#一、安装和编译" class="headerlink" title="一、安装和编译"></a>一、安装和编译</h2><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-comment">// 全局安装</span><br>npm install -g typescript<br><br><span class="hljs-comment">// TS不能直接运行,需要编译成js代码,再去运行js</span><br><span class="hljs-comment">// 编译</span><br>tsc greeter.<span class="hljs-property">ts</span><br><span class="hljs-comment">// 编译过后,同目录会出现一个名字相同的 greeter.js 文件</span><br>node greeter.<span class="hljs-property">js</span><br><br><span class="hljs-comment">// 此时每次修改ts文件,都需要重新编译</span><br><span class="hljs-comment">// 使用 tsc greeter.ts -w   &quot; -w &quot; 可以监听文件,帮我们自动编译</span><br><span class="hljs-comment">// 缺点: 一次只能监听一个ts文件</span><br>tsc greeter.<span class="hljs-property">ts</span> -w<br><br><span class="hljs-comment">// 想一次编译目录下所有 ts 文件</span><br><span class="hljs-comment">// 手动在目录下创建 tsconfig.json 文件(ts的配置文件)</span><br><span class="hljs-comment">// 里面内容只需要输入一个 &#123;&#125;</span><br>&#123;<br><br>&#125;<br><span class="hljs-comment">// 在目录下运行 tsc 就可以编译所有 ts 文件了</span><br></code></pre></td></tr></table></figure>
 
-<h2 id="二、基础类型"><a href="#二、基础类型" class="headerlink" title="二、基础类型"></a>二、基础类型</h2><table>
+<h2 id="二、基础类型和声明"><a href="#二、基础类型和声明" class="headerlink" title="二、基础类型和声明"></a>二、基础类型和声明</h2><table>
 <thead>
 <tr>
 <th>类型</th>
