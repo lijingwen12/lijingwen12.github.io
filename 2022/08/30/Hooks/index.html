@@ -16,14 +16,16 @@
   <meta name="author" content="Xiaowen">
   <meta name="keywords" content="">
   
-    <meta property="og:type" content="article">
+    <meta name="description" content="useContext用来将定义在父组件的值，向下共享，使得它的子组件或子孙组件能够获取到这些被共享出去的值。优点：值不需要使用父子传值，层层传递。例子：如下，我想将组件最顶层，的某一组数据共享出去，让他的所有子组件&#x2F;子孙组件都能够使用。 最顶层组件：Hello.jsx第一步：引入createContext,创建共享组件，并使用export关键字导出去。第二部：使用的共享组件的Provid">
+<meta property="og:type" content="article">
 <meta property="og:title" content="Hooks">
 <meta property="og:url" content="http://example.com/2022/08/30/Hooks/index.html">
 <meta property="og:site_name" content="xiaowen blog">
+<meta property="og:description" content="useContext用来将定义在父组件的值，向下共享，使得它的子组件或子孙组件能够获取到这些被共享出去的值。优点：值不需要使用父子传值，层层传递。例子：如下，我想将组件最顶层，的某一组数据共享出去，让他的所有子组件&#x2F;子孙组件都能够使用。 最顶层组件：Hello.jsx第一步：引入createContext,创建共享组件，并使用export关键字导出去。第二部：使用的共享组件的Provid">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/img/Mary.gif">
 <meta property="article:published_time" content="2022-08-30T15:51:27.000Z">
-<meta property="article:modified_time" content="2022-08-30T16:04:45.918Z">
+<meta property="article:modified_time" content="2022-09-12T15:43:49.547Z">
 <meta property="article:author" content="Xiaowen">
 <meta property="article:tag" content="前端">
 <meta name="twitter:card" content="summary_large_image">
@@ -219,7 +221,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          0 字
+          1.5k 字
         
       </span>
     
@@ -230,7 +232,7 @@
         
         
         
-          1 分钟
+          13 分钟
         
       </span>
     
@@ -273,7 +275,17 @@
             
               <div class="markdown-body">
                 
-                
+                <h1 id="useContext"><a href="#useContext" class="headerlink" title="useContext"></a>useContext</h1><p>用来将定义在父组件的值，<code>向下</code>共享，使得它的<code>子组件</code>或<code>子孙组件</code>能够获取到这些被共享出去的值。<br>优点：值<strong>不需要</strong>使用父子传值，层层传递。<br>例子：如下，我想将组件最顶层，的某一组数据共享出去，让他的所有子组件&#x2F;子孙组件都能够使用。</p>
+<p>最顶层组件：Hello.jsx<br>第一步：引入<code>createContext</code>,创建共享组件，并使用<code>export</code>关键字导出去。<br>第二部：使用的共享组件的<code>Provider</code>包裹子组件，并使用<code>value</code>属性，将需要共享的值传进去。</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-keyword">import</span> <span class="hljs-title class_">React</span>, &#123; createContext, useState &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;react&quot;</span>;<br><span class="hljs-keyword">import</span> A <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./A&quot;</span>;<br><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> objContext = <span class="hljs-title function_">createContext</span>();<br><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">Hello</span>(<span class="hljs-params"></span>) &#123;<br>  <span class="hljs-keyword">const</span> [obj, setObj] = <span class="hljs-title function_">useState</span>(&#123;<br>    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;琪琪&quot;</span>,<br>    <span class="hljs-attr">age</span>: <span class="hljs-number">52</span>,<br>  &#125;);<br>  <span class="hljs-keyword">return</span> (<br>    <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span></span><br><span class="language-xml">      <span class="hljs-tag">&lt;<span class="hljs-name">button</span></span></span><br><span class="hljs-tag"><span class="language-xml">        <span class="hljs-attr">onClick</span>=<span class="hljs-string">&#123;()</span> =&gt;</span></span><br><span class="language-xml">          setObj(&#123;</span><br><span class="language-xml">            name: &quot;小文&quot;,</span><br><span class="language-xml">            age: 22,</span><br><span class="language-xml">          &#125;)</span><br><span class="language-xml">        &#125;</span><br><span class="language-xml">      &gt;</span><br><span class="language-xml">        变成小文</span><br><span class="language-xml">      <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></span><br><span class="language-xml">      <span class="hljs-tag">&lt;<span class="hljs-name">objContext.Provider</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&#123;obj&#125;</span>&gt;</span></span><br><span class="language-xml">        <span class="hljs-tag">&lt;<span class="hljs-name">A</span> /&gt;</span></span><br><span class="language-xml">      <span class="hljs-tag">&lt;/<span class="hljs-name">objContext.Provider</span>&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br>  );<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>子组件 A：<br>负责包裹子孙组件 B</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-keyword">import</span> <span class="hljs-title class_">React</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;react&quot;</span>;<br><span class="hljs-keyword">import</span> B <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./B&quot;</span>;<br><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">A</span>(<span class="hljs-params"></span>) &#123;<br>  <span class="hljs-keyword">return</span> (<br>    <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span></span></span><br><span class="hljs-tag"><span class="language-xml">      <span class="hljs-attr">style</span>=<span class="hljs-string">&#123;&#123;</span> <span class="hljs-attr">width:</span> <span class="hljs-attr">400</span>, <span class="hljs-attr">height:</span> <span class="hljs-attr">400</span>, <span class="hljs-attr">border:</span> <span class="hljs-attr">1</span>, <span class="hljs-attr">backgroundColor:</span> &quot;<span class="hljs-attr">yellow</span>&quot; &#125;&#125;</span></span><br><span class="hljs-tag"><span class="language-xml">    &gt;</span></span><br><span class="language-xml">      我是A组件</span><br><span class="language-xml">      <span class="hljs-tag">&lt;<span class="hljs-name">B</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">B</span>&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br>  );<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>子孙组件 B：<br>负责使用共享出来的值</p>
+<p>第一步：需要引入最顶层组件所创建的<code>objContext</code>。<br>第二部：使用<code>useContext</code>获取共享出来的值。</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-keyword">import</span> <span class="hljs-title class_">React</span>, &#123; useContext &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;react&quot;</span>;<br><span class="hljs-keyword">import</span> C <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./C&quot;</span>;<br><span class="hljs-keyword">import</span> &#123; objContext &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./Hello&quot;</span>;<br><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">B</span>(<span class="hljs-params"></span>) &#123;<br>  <span class="hljs-keyword">const</span> value = <span class="hljs-title function_">useContext</span>(objContext);<br>  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(value);<br>  <span class="hljs-keyword">return</span> (<br>    <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&#123;&#123;</span> <span class="hljs-attr">width:</span> <span class="hljs-attr">300</span>, <span class="hljs-attr">height:</span> <span class="hljs-attr">300</span>, <span class="hljs-attr">border:</span> <span class="hljs-attr">1</span>, <span class="hljs-attr">backgroundColor:</span> &quot;<span class="hljs-attr">red</span>&quot; &#125;&#125;&gt;</span></span><br><span class="language-xml">      我是：&#123;value.name&#125;</span><br><span class="language-xml">      <span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span></span><br><span class="language-xml">      年龄：&#123;value.age&#125;</span><br><span class="language-xml">      <span class="hljs-tag">&lt;<span class="hljs-name">C</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">C</span>&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br>  );<br>&#125;<br></code></pre></td></tr></table></figure>
+
                 
               </div>
             
